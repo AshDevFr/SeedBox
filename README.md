@@ -10,12 +10,11 @@ docker-compose run --rm openvpn ovpn_initpki
 
 ### Create an account
 ```
-docker-compose run openvpn easyrsa build-client-full CLIENTNAME nopass
+docker-compose run --rm openvpn easyrsa build-client-full CLIENTNAME nopass
 ```
 
 ### Retrieve the client configuration
 ```
-docker-compose run --rm openvpn easyrsa build-client-full CLIENTNAME nopass
 docker-compose run --rm openvpn ovpn_getclient CLIENTNAME > CLIENTNAME.ovpn
 ```
 
