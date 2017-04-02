@@ -13,5 +13,6 @@ ENV USERNAME=user \
 
 COPY nginx.conf common_default.conf ssl.conf /etc/nginx/
 COPY init.sh /
+RUN chmod +x /init.sh
 
 CMD ["/init.sh"]

@@ -52,34 +52,34 @@ services:
             - env_config
 
     rutorrent:
-        image: diameter/rtorrent-rutorrent:stable-alpine
+        image: linuxserver/rutorrent
         restart: always
         networks:
             - main
         ports:
-            - "49161:49161"
-            - "49161:49161/udp"
-            - "49160:49160/udp"
+            - "51413:51413"
+            - "51413:51413/udp"
+            - "6881:6881/udp"
         volumes:
             - config_rutorrent:/downloads
             - torrents:/torrents
         env_file:
             - env_config
 
-    transmission:
-        image: linuxserver/transmission
-        restart: always
-        networks:
-            - main
-        ports:
-            - "9091:9091"
-            - "51413:51413"
-            - "51413:51413/udp"
-        volumes:
-            - config_transmission:/config
-            - torrents:/torrents
-        env_file:
-            - env_config
+    # transmission:
+    #     image: linuxserver/transmission
+    #     restart: always
+    #     networks:
+    #         - main
+    #     ports:
+    #         - "9091:9091"
+    #         - "51413:51413"
+    #         - "51413:51413/udp"
+    #     volumes:
+    #         - config_transmission:/config
+    #         - torrents:/torrents
+    #     env_file:
+    #         - env_config
 
     sickrage:
         image: linuxserver/sickrage
