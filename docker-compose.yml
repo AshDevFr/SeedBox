@@ -8,7 +8,7 @@ volumes:
         driver: local
     config_muximux:
         driver: local
-    config_rutorrent:
+    config_deluge:
         driver: local
     config_transmission:
         driver: local
@@ -75,7 +75,7 @@ services:
             - "58946:58946"
             - "58946:58946/udp"
         volumes:
-            - config_transmission:/config
+            - config_deluge:/config
             - torrents:/downloads
         env_file:
             - env_config
