@@ -1,0 +1,174 @@
+version: '3'
+
+networks:
+    main:
+
+volumes:
+    config_nginx:
+        driver: local
+    config_muximux:
+        driver: local
+    config_rutorrent:
+        driver: local
+    config_transmission:
+        driver: local
+    config_sickrage:
+        driver: local
+    config_couchpotato:
+        driver: local
+    config_headphones:
+        driver: local
+    config_sonarr:
+        driver: local
+    config_plex:
+        driver: local
+    config_openvpn:
+        driver: local
+    torrents:
+        driver: local
+
+services:
+    nginx:
+        build: nginx
+        restart: always
+        networks:
+            - main
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - config_nginx:/config
+        env_file:
+            - env_config
+
+    muximux:
+        image: linuxserver/muximux
+        restart: always
+        networks:
+            - main
+        volumes:
+            - config_muximux:/config
+        env_file:
+            - env_config
+
+    rutorrent:
+        image: diameter/rtorrent-rutorrent:stable-alpine
+        restart: always
+        networks:
+            - main
+        ports:
+            - "49161:49161"
+            - "49161:49161/udp"
+            - "49160:49160/udp"
+        volumes:
+            - config_rutorrent:/downloads
+            - torrents:/torrents
+        env_file:
+            - env_config
+
+    transmission:
+        image: linuxserver/transmission
+        restart: always
+        networks:
+            - main
+        ports:
+            - "9091:9091"
+            - "51413:51413"
+            - "51413:51413/udp"
+        volumes:
+            - config_transmission:/config
+            - torrents:/torrents
+        env_file:
+            - env_config
+
+    sickrage:
+        image: linuxserver/sickrage
+        restart: always
+        ports:
+            - "8081:8081"
+        networks:
+            - main
+        volumes:
+            - config_sickrage:/config
+            - torrents:/torrents
+        env_file:
+            - env_config
+
+    couchpotato:
+        image: linuxserver/couchpotato
+        restart: always
+        networks:
+            - main
+        volumes:
+            - config_couchpotato:/config
+            - torrents:/torrents
+        env_file:
+            - env_config
+
+    headphones:
+        image: linuxserver/headphones
+        restart: always
+        networks:
+            - main
+        volumes:
+            - config_headphones:/config
+            - torrents:/torrents
+        env_file:
+            - env_config
+
+    sonarr:
+        image: linuxserver/sonarr
+        restart: always
+        networks:
+            - main
+        volumes:
+            - config_sonarr:/config
+            - torrents:/tv
+        env_file:
+            - env_config
+
+    explorer:
+        image: astrolox/angular-filemanager-docker
+        restart: always
+        networks:
+            - main
+        volumes:
+            - torrents:/var/www/files
+        env_file:
+            - env_config
+
+    plex:
+        image: timhaak/plex
+        restart: always
+        networks:
+            - main
+        ports:
+            - "32400:32400"
+            # - "1900:1900/udp"
+            # - "3005:3005"
+            # - "5353:5353/udp"
+            # - "8324:8324"
+            # - "32410:32410/udp"
+            # - "32412:32412/udp"
+            # - "32413:32413/udp"
+            # - "32414:32414/udp"
+            # - "32469:32469"
+        volumes:
+            - config_plex:/config
+            - torrents:/data
+        env_file:
+            - env_config
+
+    openvpn:
+        image: kylemanna/openvpn
+        restart: always
+        networks:
+            - main
+        ports:
+            - "1194:1194/udp"
+        volumes:
+            - config_openvpn:/etc/openvpn
+        env_file:
+            - env_config
+        cap_add:
+            - NET_ADMIN

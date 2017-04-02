@@ -1,0 +1,14 @@
+#Global
+SERVERNAME=
+
+# Nginx htaccess
+USERNAME=seed
+PASSWORD=seedbox
+USE_SSL=false
+
+# For Plex Pass download
+PLEX_USERNAME=
+PLEX_PASSWORD=
+PLEX_TOKEN=
+
+TZ="Europe/London"
