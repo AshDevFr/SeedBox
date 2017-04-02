@@ -51,35 +51,34 @@ services:
         env_file:
             - env_config
 
-    rutorrent:
-        image: linuxserver/rutorrent
+    transmission:
+        image: linuxserver/transmission
         restart: always
         networks:
             - main
         ports:
             - "51413:51413"
             - "51413:51413/udp"
-            - "6881:6881/udp"
         volumes:
-            - config_rutorrent:/downloads
-            - torrents:/torrents
+            - config_transmission:/config
+            - torrents:/downloads
         env_file:
             - env_config
 
-    # transmission:
-    #     image: linuxserver/transmission
-    #     restart: always
-    #     networks:
-    #         - main
-    #     ports:
-    #         - "9091:9091"
-    #         - "51413:51413"
-    #         - "51413:51413/udp"
-    #     volumes:
-    #         - config_transmission:/config
-    #         - torrents:/torrents
-    #     env_file:
-    #         - env_config
+    deluge:
+        image: linuxserver/deluge
+        restart: always
+        networks:
+            - main
+        ports:
+            - "58846:58846"
+            - "58946:58946"
+            - "58946:58946/udp"
+        volumes:
+            - config_transmission:/config
+            - torrents:/downloads
+        env_file:
+            - env_config
 
     sickrage:
         image: linuxserver/sickrage
