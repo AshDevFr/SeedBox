@@ -17,3 +17,13 @@ docker-compose run openvpn easyrsa build-client-full CLIENTNAME nopass
 ```
 docker-compose run openvpn easyrsa build-client-full ovpn_getclient CLIENTNAME > CLIENTNAME.ovpn
 ```
+
+
+## Run the Seedbox
+
+Edit the **env_config** to change the configuration
+
+Run the Seedbox:
+```
+docker-compose up -d
+```
