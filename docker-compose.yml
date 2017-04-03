@@ -66,8 +66,8 @@ services:
             - env_config
 
     deluge:
-        # image: linuxserver/deluge
-        build: deluge
+        image: linuxserver/deluge
+        # build: deluge
         restart: always
         networks:
             - main
