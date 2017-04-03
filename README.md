@@ -27,3 +27,8 @@ Run the Seedbox:
 ```
 docker-compose up -d
 ```
+
+
+## Explorer
+
+The explorer used is **Filerun** The default login password is *superuser/superuser*
