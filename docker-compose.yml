@@ -20,6 +20,10 @@ volumes:
         driver: local
     config_sonarr:
         driver: local
+    config_explorer:
+        driver: local
+    config_db:
+        driver: local
     config_plex:
         driver: local
     config_openvpn:
@@ -128,14 +132,24 @@ services:
             - env_config
 
     explorer:
-        image: astrolox/angular-filemanager-docker
+        image: afian/filerun
         restart: always
         networks:
             - main
         volumes:
-            - torrents:/var/www/files
+            - config_explorer:/var/www/html
+            - torrents:/user-files/superuser
         env_file:
             - env_config
+
+    db:
+      image: mysql:5.6
+      networks:
+          - main
+      volumes:
+          - config_db:/var/lib/mysql
+      env_file:
+          - env_config
 
     plex:
         image: timhaak/plex

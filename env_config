@@ -11,4 +11,10 @@ PLEX_USERNAME=
 PLEX_PASSWORD=
 PLEX_TOKEN=
 
+#DB for filerun
+MYSQL_ROOT_PASSWORD=filerun
+MYSQL_USER=filerun
+MYSQL_PASSWORD=filerun
+MYSQL_DATABASE=filerun
+
 TZ="Europe/London"
