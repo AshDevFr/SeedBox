@@ -58,7 +58,7 @@ else
   targetDir=/downloads/$OTHER_DIR
 fi
 
-ln -fs "$TR_TORRENT_DIR/$filename" $targetDir
+ln -fs "$TR_TORRENT_DIR/$TR_TORRENT_NAME" $targetDir
 echo "\"$filename\" linked in \"$targetDir\"" >> $logfile
 # echo "ln -s $TR_TORRENT_DIR/$filename $targetDir"
 
