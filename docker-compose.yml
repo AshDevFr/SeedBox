@@ -94,7 +94,7 @@ services:
             - main
         volumes:
             - config_sickrage:/config
-            - torrents:/torrents
+            - torrents:/downloads
         env_file:
             - env_config
 
@@ -105,7 +105,7 @@ services:
             - main
         volumes:
             - config_couchpotato:/config
-            - torrents:/torrents
+            - torrents:/downloads
         env_file:
             - env_config
 
@@ -116,7 +116,7 @@ services:
             - main
         volumes:
             - config_headphones:/config
-            - torrents:/torrents
+            - torrents:/downloads
         env_file:
             - env_config
 
@@ -169,7 +169,7 @@ services:
             # - "32469:32469"
         volumes:
             - config_plex:/config
-            - torrents:/data
+            - torrents:/downloads
         env_file:
             - env_config
 
