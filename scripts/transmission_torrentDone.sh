@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Uncomment to debug:
-TR_TORRENT_DIR="$1"
-TR_TORRENT_NAME="$2"
-TVSHOWS_DIR="$3"
-MOVIES_DIR="$4"
-OTHER_DIR="$5"
+# TR_TORRENT_DIR="$1"
+# TR_TORRENT_NAME="$2"
+# TVSHOWS_DIR="$3"
+# MOVIES_DIR="$4"
+# OTHER_DIR="$5"
 
 cd $TR_TORRENT_DIR
 filename="$TR_TORRENT_NAME"
