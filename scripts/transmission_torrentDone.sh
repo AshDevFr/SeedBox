@@ -33,7 +33,7 @@ fi
 
 videoFile=$(find "$filename" -type f \( -iname \*.mkv -o -iname \*.avi -o -iname \*.mp4 -o -iname \*.mov -o -iname \*.mpeg -o -iname \*.mpg -o -iname \*.flv -o -iname \*.wmv -o -iname \*.srt \) -exec basename {} \; | head -n 1)
 
-if [ -n "$videoFile" ] && [[ "$videoFile" =~ ^(.*)((S|s)[0-9]+?(E|e)[0-9]+|[0-9]+(X|x)[0-9]+).*$ || "$filename" =~ ^(.*)((S|s)[0-9]+?(E|e)[0-9]+|[0-9]+(X|x)[0-9]+).*$ ]]
+if [ -n "$videoFile" ] && [[ "$videoFile" =~ ^(.*)((S|s)[0-9]+\s*(E|e)[0-9]+|[0-9]+(X|x)[0-9]+).*$ || "$filename" =~ ^(.*)((S|s)[0-9]+?(E|e)[0-9]+|[0-9]+(X|x)[0-9]+).*$ ]]
 then
   showRegex=$(echo ${BASH_REMATCH[1]} | sed -e 's/[^[:alpha:][:digit:]]/.*/g')
   targetDir=/downloads/$TVSHOWS_DIR
