@@ -127,7 +127,7 @@ services:
             - main
         volumes:
             - config_sonarr:/config
-            - torrents:/tv
+            - torrents:/downloads
         env_file:
             - env_config
 
