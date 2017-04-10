@@ -21,14 +21,16 @@ docker-compose run --rm openvpn ovpn_getclient CLIENTNAME > CLIENTNAME.ovpn
 
 ## Run the Seedbox
 
-Edit the **env_config** to change the configuration
+Edit the **env_config** to change the configuration.
+
+You may want to change the UID and GID so each container will use the same user.
+
+Build the images:
+```
+docker-compose build
+```
 
 Run the Seedbox:
 ```
 docker-compose up -d
 ```
-
-
-## Explorer
-
-The explorer used is **Filerun** The default login password is *superuser/superuser*
