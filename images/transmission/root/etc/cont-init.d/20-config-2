@@ -3,11 +3,14 @@
 # copy scripts
 cp -r /defaults/scripts /config/
 
-mkdir -p /downloads/_torrents
+mkdir -p /downloads/{_torrents,Movies,TVShows,Other}
 
 # permissions
 chown -R abc:abc \
-	/config/scripts \
-  /downloads/_torrents
+  /config/scripts \
+  /downloads/_torrents \
+  /downloads/Movies \
+  /downloads/TVShows \
+  /downloads/Other
 
 chmod +x /config/scripts/*.sh
