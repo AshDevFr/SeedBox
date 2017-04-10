@@ -145,7 +145,7 @@ services:
             - env_config
 
     plex:
-        image: timhaak/plex
+        image: linuxserver/plex
         restart: always
         networks:
             - main
