@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# copy settings
+cp /defaults/settings.ini.php /config/www/muximux/
+
+sed -i.bak -e 's/__SERVERNAME__/'"${SERVERNAME:-localhost.local}"'/g' /config/www/muximux/settings.ini.php
+
+# permissions
+chown -R abc:abc \
+	/config/www

@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+
+# copy scripts
+cp -r /defaults/scripts /config/
+
+mkdir -p /downloads/_torrents
+
+# permissions
+chown -R abc:abc \
+	/config/scripts \
+  /downloads/_torrents
+
+chmod +x /config/scripts/*.sh

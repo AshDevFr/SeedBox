@@ -46,10 +46,10 @@ services:
             - env_config
 
     muximux:
-        image: linuxserver/muximux
-        # build:
-        #   context: images/muximux
-        #   dockerfile: Dockerfile
+        # image: linuxserver/muximux
+        build:
+          context: images/muximux
+          dockerfile: Dockerfile
         restart: always
         networks:
             - main
@@ -59,10 +59,10 @@ services:
             - env_config
 
     transmission:
-        image: linuxserver/transmission
-        # build:
-        #   context: images/transmission
-        #   dockerfile: Dockerfile
+        # image: linuxserver/transmission
+        build:
+          context: images/transmission
+          dockerfile: Dockerfile
         restart: always
         networks:
             - main
