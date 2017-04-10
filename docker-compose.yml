@@ -33,7 +33,7 @@ volumes:
 
 services:
     nginx:
-        build: nginx
+        build: images/nginx
         restart: always
         networks:
             - main
@@ -71,7 +71,7 @@ services:
 
     deluge:
         image: linuxserver/deluge
-        # build: deluge
+        # build: images/deluge
         restart: always
         networks:
             - main
@@ -132,25 +132,17 @@ services:
             - env_config
 
     explorer:
-        image: afian/filerun
+        build:
+          context: images/explorer
+          dockerfile: Dockerfile
         restart: always
         networks:
             - main
         volumes:
             - config_explorer:/var/www/html
-            - torrents:/user-files/superuser
+            - torrents:/var/www/files
         env_file:
             - env_config
-
-    db:
-      image: mysql:5.6
-      restart: always
-      networks:
-          - main
-      volumes:
-          - config_db:/var/lib/mysql
-      env_file:
-          - env_config
 
     plex:
         image: timhaak/plex
