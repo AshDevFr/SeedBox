@@ -16,10 +16,6 @@ PLEX_TOKEN=
 # PUID=
 # PGID=
 
-# Explorer
-# APACHE_RUN_USER=
-# APACHE_RUN_GROUP=
-
 # Transmission scripts
 TVSHOWS_DIR=TVShows
 MOVIES_DIR=Movies

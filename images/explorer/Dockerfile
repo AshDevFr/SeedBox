@@ -22,4 +22,18 @@ RUN cd /var/www/html/ && \
 RUN mkdir -p /var/www/files && \
     chmod 777 /var/www/files
 
+# create default user
+RUN groupmod -g 1000 users && \
+    useradd -u 911 -U -d /config -s /bin/false abc && \
+    usermod -G users abc
+
+ENV APACHE_RUN_USER abc
+ENV APACHE_RUN_GROUP abc
+
+COPY init.sh /
+RUN chmod +x /init.sh
+
 VOLUME /var/www/files
+
+ENTRYPOINT []
+CMD ["/init.sh"]
