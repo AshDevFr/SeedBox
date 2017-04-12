@@ -7,7 +7,7 @@ color = "#31ac63"
 splashscreen = "true"
 tabcolor = "true"
 rss = "true"
-rssUrl = "https://www.wired.com/feed/"
+rssUrl = "https://eztv.ag/ezrss.xml"
 userNameInput = "admin"
 password = "muximux"
 
