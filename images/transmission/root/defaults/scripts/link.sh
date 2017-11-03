@@ -38,7 +38,7 @@ do
     targetDir=/downloads/$TVSHOWS_DIR
 
     IFS=$'\n'
-    for dirName in $(find /downloads/$TVSHOWS_DIR -type d -type d -exec basename {} \;)
+    for dirName in $(find /downloads/$TVSHOWS_DIR -maxdepth 1 -type d -exec basename {} \;)
     do
       match=$(echo $dirName | grep -i -E "$showRegex")
       if [ -n "$match" ]
@@ -61,5 +61,5 @@ do
   echo "\"$filename\" linked in \"$targetDir\"" >> $logfile
   # echo "ln -s $TR_TORRENT_DIR/$filename $targetDir"
 
-  echo "Transmission finished downloading \"$TR_TORRENT_NAME\" on $TR_TIME_LOCALTIME"
+  echo "Transmission finished downloading \"$TR_TORRENT_NAME\" in $targetDir at $TR_TIME_LOCALTIME"
 done
